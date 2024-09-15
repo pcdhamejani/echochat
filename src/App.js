@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 import "./App.css";
 import ChatPage from "./ChatPage";
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
+
 
 const groups = [
   {
@@ -89,6 +92,18 @@ const groups = [
     members: 110,
   }
 ];
+
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <Link to="/" className="nav-logo">EchoChat</Link>
+      <div className="nav-links">
+        <Link to="/login" className="nav-item">Login</Link>
+        <Link to="/signup" className="nav-item">Sign Up</Link>
+      </div>
+    </nav>
+  );
+}
 
 function GroupList() {
   const [searchParams, setSearchParams] = useState({
@@ -217,10 +232,15 @@ function GroupList() {
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<GroupList />} />
-        <Route path="/chat/:groupName" element={<ChatPage groups={groups} />} />
-      </Routes>
+      <div className="app-container">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<GroupList />} />
+          <Route path="/chat/:groupName" element={<ChatPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
