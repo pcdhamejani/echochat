@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const ChatPage = ({ groups }) => {
+const ChatPage = (props) => {
+  const groups = props.groups;
   const { groupName } = useParams();
   const navigate = useNavigate();
   const [group, setGroup] = useState(null);

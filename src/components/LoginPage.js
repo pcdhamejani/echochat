@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +16,8 @@ const LoginPage = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="auth-page">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
@@ -41,6 +44,7 @@ const LoginPage = () => {
         <button type="submit" className="auth-button">Login</button>
       </form>
     </div>
+    </>
   );
 };
 
